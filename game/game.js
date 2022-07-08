@@ -9,6 +9,10 @@ let score = 0;
 let questionCounter = 0;
 let availableQUestion = [];
 
+function quit() {
+  return window.location.assign("end.html");
+}
+
 // le TIMER
 // -------------------------------------------------------------------------------
 var timeleft = 60;
@@ -177,7 +181,7 @@ startGame = () => {
 getNewQuestion = () => {
   timeleft = 60;
   if (availableQUestion.length === 0 || questionCounter >= 15) {
-    localStorage.setItem("mostrecentScore", score);
+    sessionStorage.setItem("mostrecentScore", score);
     return (window.location.href = "./end.html");
   }
 
@@ -213,5 +217,4 @@ suivant.addEventListener("click", () => {
   getNewQuestion();
 });
 // ---------------------------------------------------------------------------
-
 startGame();

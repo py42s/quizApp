@@ -1,9 +1,9 @@
-const mostrecentScore = localStorage.getItem("mostrecentScore");
+const mostrecentScore = sessionStorage.getItem("mostrecentScore");
 const finalscore = document.getElementById("score");
 const identite = document.getElementById("identite");
-const monNOm = localStorage.getItem("monNOm");
+const monNOm = sessionStorage.getItem("monNOm");
 const emailsid = document.getElementById("emailsid");
-const monEmail = localStorage.getItem("monEmail");
+const monEmail = sessionStorage.getItem("monEmail");
 var images = document.getElementById("image");
 let accueil = document.getElementById("accueil");
 
@@ -17,6 +17,7 @@ if (mostrecentScore >= 8) {
 }
 
 accueil.addEventListener("click", () => {
+  sessionStorage.clear();
+  localStorage.setItem("mostrecentScore", 0);
   return (window.location.href = "../index.html");
-  // localStorage.clear();
 });

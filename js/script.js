@@ -7,8 +7,8 @@ let myError2 = $("#erreur2");
 forme.submit(function (event) {
   let names = myName.val();
   let emails = myEmail.val();
-  localStorage.setItem("monNOm", names);
-  localStorage.setItem("monEmail", emails);
+  sessionStorage.setItem("monNOm", names);
+  sessionStorage.setItem("monEmail", emails);
   if (myName.val().trim() == "") {
     myError.text(
       "N'oubliez de renseigner votre nom avant de commencer le Quiz"
