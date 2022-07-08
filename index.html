@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Game</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h1>JavaScript Quiz</h1>
+        <p>
+          Évaluez vos connaissances en JavaScript en répondant aux questions que
+          nous avons spécialement sélectionnées pour vous. C'est fun et c'est
+          gratuit.
+        </p>
+      </section>
+      <form action="./game/game.html" class="forme">
+        <div id="form">
+          <span>Nom</span>
+          <input type="text" class="name" placeholder="Entrer votre nom" />
+          <span class="errorr" id="erreur"></span>
+          <span>Email</span>
+          <input type="email" class="email" placeholder="Address Email" />
+          <span class="errorr" id="erreur2"></span>
+        </div>
+        <input type="submit" value="Commencer" />
+      </form>
+    </main>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
