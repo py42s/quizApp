@@ -2,15 +2,18 @@ let question = document.getElementById("question");
 let choix = Array.from(document.getElementsByClassName("choix-text"));
 let suivant = document.querySelector(".suivant");
 let counter = document.getElementById("questioncounter");
-let elts = Array.from(document.querySelectorAll("input"));
+let elts = Array.from(document.querySelectorAll("input[type='radio']"));
 
 let currentQuestion = {};
 let score = 0;
 let questionCounter = 0;
 let availableQUestion = [];
+let finalscore = document.getElementById("score");
+let image = document.getElementById("image");
 
 function quit() {
-  return window.location.assign("end.html");
+  document.querySelector(".pageQuest").classList.add("displayerN");
+  return document.querySelector(".pageEnd").classList.add("displayer");
 }
 
 // le TIMER
@@ -19,7 +22,9 @@ var timeleft = 60;
 var downloadTime = setInterval(function () {
   document.getElementById("progressBar").value = timeleft--;
   document.getElementById("textCount").innerText = timeleft;
-  if (timeleft <= 0) clearInterval(downloadTime);
+  if (timeleft == 0) {
+    getNewQuestion();
+  }
 }, 1000);
 // -----------------------------------------------------------------------------------
 
@@ -32,7 +37,6 @@ let questions = [
     choix2: "La balise javascript",
     choix3: "La balise script",
     choix4: "La balise rel",
-    choix5: "La balise link",
     answer: 3,
   },
   {
@@ -41,7 +45,6 @@ let questions = [
     choix2: "call function sum()",
     choix3: "call sum()",
     choix4: "fonction sum()",
-    choix5: "aucune bonne reponse",
     answer: 1,
   },
   {
@@ -50,7 +53,6 @@ let questions = [
     choix2: "La section <head> et <body>",
     choix3: "La section <body>",
     choix4: "La balise link",
-    choix5: "aucune bonne reponse",
     answer: 3,
   },
   {
@@ -59,7 +61,6 @@ let questions = [
     choix2: "alert('Hello World')",
     choix3: "msgBox('Hello World')",
     choix4: "alertBox('Hello World')",
-    choix5: "printf('Hello World')",
     answer: 2,
   },
   {
@@ -68,7 +69,6 @@ let questions = [
     choix2: "function=f()",
     choix3: "function:f()",
     choix4: "f()",
-    choix5: "aucune bonne reponse",
     answer: 1,
   },
   {
@@ -77,7 +77,6 @@ let questions = [
     choix2: "if a = 2",
     choix3: "if a == 2 else",
     choix4: "if (a == 2 )",
-    choix5: "aucune bonne reponse",
     answer: 4,
   },
   {
@@ -86,7 +85,6 @@ let questions = [
     choix2: "const",
     choix3: "let",
     choix4: "variable",
-    choix5: "aucune bonne reponse",
     answer: 4,
   },
   {
@@ -95,7 +93,6 @@ let questions = [
     choix2: "if (a != 2)",
     choix3: "if a =! 2 then",
     choix4: "if(a <> 2)",
-    choix5: "aucune bonne reponse",
     answer: 2,
   },
   {
@@ -104,7 +101,7 @@ let questions = [
     choix2: "Null",
     choix3: "undefined",
     choix4: "Error",
-    choix5: "aucune bonne reponse",
+
     answer: 3,
   },
   {
@@ -113,7 +110,6 @@ let questions = [
     choix2: "False",
     choix3: "Exception",
     choix4: "Null",
-    choix5: "aucune bonne reponse",
     answer: 2,
   },
   {
@@ -123,7 +119,6 @@ let questions = [
     choix2: "14",
     choix3: "0.12",
     choix4: "0",
-    choix5: "aucune bonne reponse",
     answer: 4,
   },
   {
@@ -132,7 +127,6 @@ let questions = [
     choix2: "load",
     choix3: "mouseclick",
     choix4: "mouseout",
-    choix5: "submit",
     answer: 3,
   },
   {
@@ -142,7 +136,6 @@ let questions = [
     choix2: "CLASS",
     choix3: "className",
     choix4: "listName",
-    choix5: "aucune bonne reponse",
     answer: 3,
   },
   {
@@ -151,7 +144,6 @@ let questions = [
     choix2: "Java",
     choix3: "Apple",
     choix4: "Microsoft",
-    choix5: "IBM",
     answer: 1,
   },
   {
@@ -159,9 +151,8 @@ let questions = [
     choix1: "String",
     choix2: "Number",
     choix3: "Bigint",
-    choix4: "Undefined",
-    choix5: "aucune bonne reponse",
-    answer: 5,
+    choix4: "aucune bonne reponse",
+    answer: 4,
   },
 ];
 // --------------------------------------------------------------------------------
@@ -169,9 +160,11 @@ let questions = [
 // fonction de pour commencer le Jeux
 // ---------------------------------------------------------------
 startGame = () => {
+  timeleft = 60;
   questionCounter = 0;
   score = 0;
   availableQUestion = [...questions];
+
   getNewQuestion();
 };
 // ----------------------------------------------------------------
@@ -181,8 +174,9 @@ startGame = () => {
 getNewQuestion = () => {
   timeleft = 60;
   if (availableQUestion.length === 0 || questionCounter >= 15) {
-    sessionStorage.setItem("mostrecentScore", score);
-    return (window.location.href = "./end.html");
+    document.querySelector(".pageQuest").classList.add("displayerN");
+
+    return document.querySelector(".pageEnd").classList.add("displayer");
   }
 
   questionCounter++;
@@ -213,6 +207,15 @@ suivant.addEventListener("click", () => {
   if (reponse == vraireponse) {
     score++;
   }
+  var totalScore = score;
+  finalscore.innerText = totalScore + "/15";
+  if (totalScore <= 8) {
+    image.classList.add("failed");
+  } else {
+    image.classList.remove("failed");
+    image.classList.add("success");
+  }
+  elts.forEach((element) => (element.checked = false));
 
   getNewQuestion();
 });

@@ -17,7 +17,7 @@ body {
     height: 80vh;
     background-color: white;
     width: 90vw;
-    margin-top: 10%;
+    margin-top: 25%;
     margin-bottom: 10%;
     margin-left: auto;
     margin-right: auto;
@@ -66,6 +66,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     background: #ffffff;
+    padding-bottom: 2%;
+    color: rgba(85, 85, 85, 1);
   }
   input[type="submit"] {
     position: fixed;
@@ -81,6 +83,7 @@ body {
     letter-spacing: 1px;
     margin-left: auto;
     margin-right: auto;
+    color: rgba(85, 85, 85, 1);
   }
   form {
     display: flex;
@@ -146,7 +149,7 @@ input[type="submit"] {
   height: 40px;
   position: relative;
   margin-left: 15%;
-  margin-top: 20%;
+  margin-top: 5%;
   cursor: pointer;
   border: none;
   text-transform: uppercase;
@@ -158,12 +161,16 @@ input[type="submit"] {
 input[type="submit"]:hover {
   box-shadow: 0 0 3pt 1pt #028a3d;
 }
+span {
+  color: rgba(85, 85, 85, 1);
+}
 .errorr {
   font-size: 0.6em;
   font-style: italic;
 }
 p {
   text-align: center;
+  color: rgba(85, 85, 85, 1);
 }
 h1 {
   text-align: center;
@@ -172,6 +179,7 @@ h1 {
   font-weight: 500;
   font-size: 32px;
   line-height: 39px;
+  color: rgba(85, 85, 85, 1);
 }
 .score {
   font-size: 60px;
@@ -239,5 +247,106 @@ h1 {
   flex-direction: column;
   justify-content: space-evenly;
 }
-#quit {
+/* game */
+.pageQuest {
+  display: none;
+}
+.pageEnd {
+  display: none;
+}
+
+.choix {
+  display: flex;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+  border: 0.1rem solid hsl(0, 0%, 83%);
+  height: 40px;
+  cursor: pointer;
+  align-items: center;
+  gap: 5px;
+}
+.choix:hover {
+  box-shadow: 0 0 5pt 2pt #d3d3d3;
+  border: 1px solid #028a3d;
+  transition: 1;
+}
+h2 {
+  padding-top: 10%;
+  padding-left: 7%;
+  font-size: 15px;
+  text-align: center;
+}
+.button {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.quitter {
+  background-color: #ec880c;
+  cursor: pointer;
+  border: none;
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  width: 130px;
+  height: 30px;
+}
+.suivant {
+  background-color: #028a3d;
+  cursor: pointer;
+  border: none;
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  width: 130px;
+  height: 30px;
+}
+.suivant:hover {
+  box-shadow: 0 0 3pt 1pt #028a3d;
+}
+.quitter:hover {
+  box-shadow: 0 0 3pt 1pt #ec880c;
+}
+#progressBar ::-moz-progress-bar {
+  background-color: #028a3d;
+}
+#progressBar {
+  width: 100%;
+  height: 6px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  accent-color: #028a3d;
+}
+#counter p {
+  text-align: left;
+  font-size: 15px;
+  color: gray;
+}
+#section2 {
+  display: flex;
+  gap: 2px;
+}
+#quest {
+  display: flex;
+  gap: 0px;
+}
+
+#counter {
+  display: flex;
+  justify-content: space-between;
+}
+.displayer {
+  display: block;
+}
+.displayerN {
+  display: none;
 }
