@@ -210,14 +210,14 @@ h1 {
 .success {
   width: 110px;
   height: 110px;
-  background: url("./success.png") no-repeat;
+  background: url("../img/success.png") no-repeat;
   margin-left: auto;
   margin-right: auto;
 }
 .failed {
   width: 110px;
   height: 110px;
-  background: url("./failed.png") no-repeat;
+  background: url("../img/failed.png") no-repeat;
   margin-left: auto;
   margin-right: auto;
 }
