@@ -45,5 +45,6 @@ forme.addEventListener("input", function (f) {
   }
 });
 accueil.addEventListener("click", () => {
+  document.querySelector(".pageEnd").classList.add("displayerN");
   return (window.location.href = "../index.html");
 });
