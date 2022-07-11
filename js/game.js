@@ -196,9 +196,11 @@ getNewQuestion = () => {
 // -----------------------------------------------------------------------
 
 //fonction de verification du checking
-// ------------------------------------------------------------------------
+// -----------------------------------------------------------------------
+
 suivant.addEventListener("click", () => {
   const ischecked = (element) => element.checked == true;
+
   let reponse = 0;
   reponse += elts.findIndex(ischecked) + 1;
 
@@ -215,6 +217,7 @@ suivant.addEventListener("click", () => {
     image.classList.remove("failed");
     image.classList.add("success");
   }
+
   elts.forEach((element) => (element.checked = false));
 
   getNewQuestion();
