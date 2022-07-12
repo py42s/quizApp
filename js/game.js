@@ -1,15 +1,15 @@
-let question = document.getElementById("question");
-let choix = Array.from(document.getElementsByClassName("choix-text"));
+let question = document.querySelector("#question");
+let choix = Array.from(document.querySelectorAll(".choix-text"));
 let suivant = document.querySelector(".suivant");
-let counter = document.getElementById("questioncounter");
+let counter = document.querySelector("#questioncounter");
 let elts = Array.from(document.querySelectorAll("input[type='radio']"));
 
 let currentQuestion = {};
 let score = 0;
 let questionCounter = 0;
 let availableQUestion = [];
-let finalscore = document.getElementById("score");
-let image = document.getElementById("image");
+let finalscore = document.querySelector("#score");
+let image = document.querySelector("#image");
 
 function quit() {
   document.querySelector(".pageQuest").classList.add("displayerN");
@@ -18,11 +18,12 @@ function quit() {
 
 // le TIMER
 // -------------------------------------------------------------------------------
-var timeleft = 60;
-var downloadTime = setInterval(function () {
-  document.getElementById("progressBar").value = timeleft--;
-  document.getElementById("textCount").innerText = timeleft;
-  if (timeleft == 0) {
+let timeleft = 60;
+let downloadTime = setInterval(function () {
+  document.querySelector("#progressBar").value = timeleft--;
+  document.querySelector("#textCount").innerText = timeleft;
+  if (timeleft <= 0) {
+    clearInterval(downloadTime);
     getNewQuestion();
   }
 }, 1000);
@@ -209,7 +210,7 @@ suivant.addEventListener("click", () => {
   if (reponse == vraireponse) {
     score++;
   }
-  var totalScore = score;
+  let totalScore = score;
   finalscore.innerText = totalScore + "/15";
   if (totalScore <= 8) {
     image.classList.add("failed");

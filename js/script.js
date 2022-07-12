@@ -8,10 +8,14 @@ let emailsid = document.querySelector("#emailsid");
 
 forme.addEventListener("submit", function (event) {
   event.preventDefault();
+
   let nom = myName.value;
   let email = myEmail.value;
   identite.innerText = nom;
   emailsid.innerText = email;
+
+  // Au cas ou l'utilisateur n'entre pas d'ientifiant
+
   if (myName.value.trim() != "" && myEmail.value.trim() != "") {
     document.querySelector(".pageAccueil").classList.add("displayerN");
     document.querySelector(".pageQuest").classList.add("displayer");
@@ -31,6 +35,8 @@ forme.addEventListener("submit", function (event) {
   }
 });
 
+// Au cas ou l'utilisateur entrer de nouveau ses identifiant
+
 forme.addEventListener("input", function (f) {
   if (myName.value.trim() != "") {
     myError.innerHTML = "N'oubliez de renseigner votre nom commencer le Quiz";
@@ -46,5 +52,5 @@ forme.addEventListener("input", function (f) {
 });
 accueil.addEventListener("click", () => {
   document.querySelector(".pageEnd").classList.add("displayerN");
-  return (window.location.href = "../index.html");
+  return document.querySelector(".pageAccueil").classList.add("displayer");
 });
