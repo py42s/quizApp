@@ -11,6 +11,7 @@ let availableQUestion = [];
 let finalscore = document.querySelector("#score");
 let image = document.querySelector("#image");
 
+// fonction quitter
 function quit() {
   document.querySelector(".pageQuest").classList.add("displayerN");
   return document.querySelector(".pageEnd").classList.add("displayer");
@@ -20,10 +21,9 @@ function quit() {
 // -------------------------------------------------------------------------------
 let timeleft = 60;
 let downloadTime = setInterval(function () {
-  document.querySelector("#progressBar").value = timeleft--;
+  document.querySelector("#progressBar").value = --timeleft;
   document.querySelector("#textCount").innerText = timeleft;
   if (timeleft <= 0) {
-    clearInterval(downloadTime);
     getNewQuestion();
   }
 }, 1000);
